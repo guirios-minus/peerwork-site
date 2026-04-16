@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta · Definite Real Estate × peerwork</title>
-    <meta name="description" content="Proposta comercial peerwork para a Definite Real Estate. Sistema de Decisão Assistida. Abril 2026.">
+    <title>Proposta · Definite Concept Real Estate × peerwork</title>
+    <meta name="description" content="Proposta comercial peerwork para a Definite Concept Real Estate. Sistema de Decisão Assistida. Abril 2026.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -81,10 +81,13 @@
             align-items: center;
             font-size: 0.72rem;
             color: var(--text-tertiary);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
             font-weight: 500;
             margin-bottom: 4vh;
+        }
+
+        .slide-header .slide-header-label {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         .slide-header .brand {
@@ -92,6 +95,7 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--text-secondary);
+            letter-spacing: 0.02em;
         }
 
         .slide-header .brand img {
@@ -147,6 +151,15 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 1.25rem;
+        }
+
+        /* peerwork stays lowercase even inside uppercase-styled elements */
+        .peerwork,
+        .brand .peerwork,
+        .section-label .peerwork,
+        .card-label .peerwork,
+        .slide-header-label .peerwork {
+            text-transform: none !important;
         }
 
         .slide-eyebrow {
@@ -546,6 +559,12 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             margin-top: 1.5rem;
+        }
+
+        .phases-grid--two {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+            max-width: 1100px;
         }
 
         .phase-card {
@@ -1083,10 +1102,10 @@
             <h1 class="cover-title">Sistema de<br><strong>Decisão Assistida</strong></h1>
 
             <div class="cover-client">
-                <img src="../assets/dc-logo.png" alt="Definite Real Estate">
+                <img src="../assets/dc-logo.png" alt="Definite Concept Real Estate">
                 <div>
                     <div class="for">Preparada para</div>
-                    <div class="name">Definite Real Estate · Ruben Sousa</div>
+                    <div class="name">Definite Concept Real Estate · Ruben Sousa</div>
                 </div>
             </div>
         </div>
@@ -1102,16 +1121,16 @@
 <!-- ─── SLIDE 2: SOBRE A PEERWORK ─── -->
 <section class="slide">
     <header class="slide-header">
-        <span>01 · Contexto</span>
+        <span class="slide-header-label">01 · Contexto</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
-        <div class="section-label">Sobre a peerwork</div>
+        <div class="section-label">Sobre a <span class="peerwork">peerwork</span></div>
         <h2 class="slide-title">A camada operacional que <strong>integra IA no trabalho real</strong></h2>
 
         <div class="about-grid">
             <div>
-                <p class="lead">Integramos inteligência artificial no fluxo real de trabalho através de playbooks estruturados, com guardrails ativos e validação humana obrigatória em cada etapa crítica.</p>
+                <p class="lead">Integramos inteligência artificial no fluxo real de trabalho através de playbooks estruturados, com guardrails ativos e validação humana obrigatória em cada etapa crítica. Esta proposta prevê um trabalho customizado de consultoria para a geração de playbooks específicos para o negócio da Definite Concept Real Estate.</p>
                 <div class="principle-quote">
                     <p>A IA estrutura. O humano decide. Sempre.</p>
                 </div>
@@ -1147,12 +1166,12 @@
 <!-- ─── SLIDE 3: DIAGNÓSTICO PRELIMINAR ─── -->
 <section class="slide warm">
     <header class="slide-header">
-        <span>02 · Diagnóstico preliminar</span>
+        <span class="slide-header-label">02 · Diagnóstico preliminar</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
         <div class="section-label">O que identificámos na reunião</div>
-        <h2 class="slide-title">Decisões recorrentes <strong>dependentes de memória individual</strong></h2>
+        <h2 class="slide-title">Decisões recorrentes <strong>dependentes de memória individual e centralizada</strong></h2>
 
         <div class="central-pattern">
             <strong>Padrão central:</strong> qualificação de imóveis, orçamentação de obra, seleção de fornecedores e validação de documentação dependem de memória humana e julgamento individual. O risco está na variabilidade e no tempo perdido, não na falta de competência.
@@ -1173,7 +1192,7 @@
             </div>
             <div class="diagnostic-card">
                 <div class="label">IA hoje</div>
-                <div class="value">Uso pontual de Claude.ai<span>Abertura a adoção estruturada</span></div>
+                <div class="value">Uso desestruturado de Claude.ai<span>Abertura a adoção estruturada</span></div>
             </div>
         </div>
     </div>
@@ -1186,7 +1205,7 @@
 <!-- ─── SLIDE 4: GESTÃO DE OBRA ─── -->
 <section class="slide">
     <header class="slide-header">
-        <span>02 · Diagnóstico · Gestão de Obra</span>
+        <span class="slide-header-label">02 · Diagnóstico · Gestão de Obra</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
@@ -1232,7 +1251,7 @@
 <!-- ─── SLIDE 5: RESTANTES PROCESSOS ─── -->
 <section class="slide warm">
     <header class="slide-header">
-        <span>02 · Diagnóstico · Restantes processos</span>
+        <span class="slide-header-label">02 · Diagnóstico · Restantes processos</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
@@ -1241,7 +1260,7 @@
 
         <div class="grid-3" style="margin-top: 2rem;">
             <div class="card">
-                <div class="card-label">Fase 2 · 02</div>
+                <div class="card-label">Semanas 3 e 4</div>
                 <h4>Gestão de Leads & Parcerias</h4>
                 <ul>
                     <li>~5/6 imóveis em simultâneo sem triagem estruturada</li>
@@ -1251,7 +1270,7 @@
                 </ul>
             </div>
             <div class="card">
-                <div class="card-label">Fase 2 · 03</div>
+                <div class="card-label">Semanas 5 e 6</div>
                 <h4>Venda e CRM</h4>
                 <ul>
                     <li>Gestão dos ~40 parceiros investidores manual</li>
@@ -1261,7 +1280,7 @@
                 </ul>
             </div>
             <div class="card">
-                <div class="card-label">Fase 3 · 04</div>
+                <div class="card-label">Semanas 7 e 8</div>
                 <h4>Documentação Legal</h4>
                 <ul>
                     <li>Checklist de documentos manual ou inexistente</li>
@@ -1277,53 +1296,43 @@
     </footer>
 </section>
 
-<!-- ─── SLIDE 6: PROPOSTA · 3 FASES ─── -->
+<!-- ─── SLIDE 6: PROPOSTA · 2 DELIVERABLES ─── -->
 <section class="slide">
     <header class="slide-header">
-        <span>03 · Proposta</span>
+        <span class="slide-header-label">03 · Proposta</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
-        <div class="section-label">Três fases. Valor em cada uma.</div>
-        <h2 class="slide-title">Cada fase resolve um problema real <strong>antes de avançar</strong></h2>
-        <p class="slide-subtitle" style="margin-bottom: 1.5rem;">Sem contrato longo. Sem compromisso para além do que faz sentido. Avançamos quando os resultados da fase anterior justificam.</p>
+        <div class="section-label">Dois deliverables. Um propósito.</div>
+        <h2 class="slide-title">Consultoria prática <strong>e sistema contínuo</strong></h2>
+        <p class="slide-subtitle" style="margin-bottom: 1.5rem;">Um projeto de consultoria de oito semanas para construir playbooks sob medida, seguido de um sistema sempre ativo que mantém a equipa autónoma.</p>
 
-        <div class="phases-grid" style="margin-top: 0.5rem;">
+        <div class="phases-grid phases-grid--two" style="margin-top: 0.5rem;">
             <div class="phase-card current">
                 <div class="phase-num">01</div>
-                <h4>Estrutura de Obra</h4>
-                <div class="phase-when">Semanas 1–4</div>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">Sistema de orçamentação, seleção de fornecedores e acompanhamento de obra. Onde o risco financeiro é mais imediato.</p>
+                <h4>Consultoria & Soluções</h4>
+                <div class="phase-when">Projeto de 8 semanas</div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.55; margin-bottom: 0;">Diagnóstico, estruturação e entrega de <strong style="color: var(--graphite); font-weight: 500;">10 a 15 playbooks customizados</strong> para os processos críticos da Definite Concept Real Estate: obra, leads, venda, documentação.</p>
                 <div class="phase-pricing">
-                    <div class="phase-price">1.500 €</div>
-                    <div class="phase-pricing-label">Fee de setup · pagamento único</div>
+                    <div class="phase-price">3.300 €</div>
+                    <div class="phase-pricing-label">Pagamento único · âmbito fechado</div>
                 </div>
             </div>
             <div class="phase-card">
                 <div class="phase-num">02</div>
-                <h4>Qualificação e Venda</h4>
-                <div class="phase-when">Meses 2–3</div>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">A consultora operacional opera com sistema de qualificação desde o dia 1, sem depender da memória do Ruben.</p>
-                <div class="phase-pricing">
-                    <div class="phase-price">900 €/mês</div>
-                    <div class="phase-pricing-label">2 meses · 1.800 € total</div>
-                </div>
-            </div>
-            <div class="phase-card">
-                <div class="phase-num">03</div>
                 <h4>Sistema Contínuo</h4>
-                <div class="phase-when">A partir do mês 4</div>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">Documentação legal, suporte à expansão geográfica e novos playbooks por necessidade identificada.</p>
+                <div class="phase-when">Retainer mensal · opcional</div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.55; margin-bottom: 0;">Acesso ao sistema de busca de playbooks da peerwork, <strong style="color: var(--graphite); font-weight: 500;">até 1.000 chamados mensais</strong> de prompts customizados e biblioteca completa de playbooks generalistas.</p>
                 <div class="phase-pricing">
                     <div class="phase-price">650 €/mês</div>
-                    <div class="phase-pricing-label">Retainer mensal</div>
+                    <div class="phase-pricing-label">Sem compromisso mínimo</div>
                 </div>
             </div>
         </div>
 
         <div class="total-callout" style="margin-top: 1.5rem;">
-            <div class="label">Investimento total ano 1<strong>12 meses, três fases</strong></div>
-            <div class="value">~ 12.100 €</div>
+            <div class="label">Investimento ano 1<strong>Consultoria + 12 meses de sistema contínuo</strong></div>
+            <div class="value">~ 11.100 €</div>
         </div>
     </div>
     <footer class="slide-footer">
@@ -1332,21 +1341,21 @@
     </footer>
 </section>
 
-<!-- ─── SLIDE 7: FASE 1 DETALHE ─── -->
+<!-- ─── SLIDE 7: DELIVERABLE 1 DETALHE ─── -->
 <section class="slide warm">
     <header class="slide-header">
-        <span>03 · Proposta · Fase 1</span>
+        <span class="slide-header-label">03 · Proposta · Deliverable 1</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
         <div class="phase-detail-header">
             <div>
-                <div class="section-label">Fase 1 · Semanas 1–4</div>
-                <h2 class="slide-title" style="margin-bottom: 0;">Estrutura de <strong>Obra</strong></h2>
+                <div class="section-label">Deliverable 1 · 8 semanas</div>
+                <h2 class="slide-title" style="margin-bottom: 0;">Consultoria <strong>& Soluções</strong></h2>
             </div>
             <div class="phase-detail-pricing">
-                <div class="price">1.500 €</div>
-                <div class="when">Fee de setup</div>
+                <div class="price">3.300 €</div>
+                <div class="when">Pagamento único</div>
             </div>
         </div>
 
@@ -1354,26 +1363,26 @@
             <div class="deliverables">
                 <h5>O que entregamos</h5>
                 <ul>
-                    <li>Diagnóstico detalhado do processo de obra atual</li>
-                    <li>Playbook de orçamentação assistida (pré-obra)</li>
-                    <li>Sistema de critérios para seleção de fornecedores</li>
-                    <li>Playbook de acompanhamento e controlo de fases</li>
-                    <li>Checklists de verificação de prazos e aprovações</li>
-                    <li>Prompts prontos a usar para análise e decisão</li>
-                    <li>Sessão de ativação com a equipa (2 horas)</li>
+                    <li>Diagnóstico detalhado dos processos críticos (obra, leads, venda, documentação)</li>
+                    <li><strong style="color: var(--graphite); font-weight: 500;">10 a 15 playbooks customizados</strong> para o negócio da Definite Concept Real Estate</li>
+                    <li>Sistemas de critérios parametrizados para decisão (fornecedores, leads, documentação)</li>
+                    <li>Checklists de verificação, prazos e aprovações</li>
+                    <li>Prompts prontos a usar, afinados aos fluxos reais do Ruben e da equipa</li>
+                    <li>Guardrails ativos e pontos de validação humana em cada playbook</li>
+                    <li>Sessões de ativação com a equipa e handover documentado</li>
                 </ul>
             </div>
             <div class="value-block">
                 <h5>Valor para o Ruben</h5>
-                <p>O acompanhamento de obra deixa de depender do CEO. Qualquer membro da equipa sabe o estado atual de cada projeto, o que falta validar, quais os prazos em risco, sem escalar tudo para o Ruben.</p>
+                <p>Em oito semanas a operação deixa de depender da memória individual. Cada decisão recorrente passa a ter um playbook dedicado, com critérios claros e pontos de validação. A equipa atua autonomamente, o Ruben deixa de ser bottleneck.</p>
             </div>
             <div class="metrics-block">
                 <h5>Métricas de sucesso</h5>
                 <ul>
-                    <li>Redução de tempo por orçamento</li>
-                    <li>Desvios de prazo detetados antes de custarem</li>
-                    <li>Decisões de fornecedor documentadas e comparáveis</li>
-                    <li>Aprovações de fase com registo</li>
+                    <li>10–15 playbooks entregues e validados</li>
+                    <li>Redução de tempo por decisão recorrente</li>
+                    <li>Desvios e riscos detetados antes de custarem</li>
+                    <li>Conhecimento documentado e transferível</li>
                 </ul>
             </div>
         </div>
@@ -1384,54 +1393,45 @@
     </footer>
 </section>
 
-<!-- ─── SLIDE 8: FASES 2 E 3 ─── -->
+<!-- ─── SLIDE 8: DELIVERABLE 2 DETALHE ─── -->
 <section class="slide">
     <header class="slide-header">
-        <span>03 · Proposta · Fases 2 e 3</span>
+        <span class="slide-header-label">03 · Proposta · Deliverable 2</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
-        <div class="section-label">Continuidade após validação da Fase 1</div>
-        <h2 class="slide-title">Avanço progressivo, <strong>sem compromisso antecipado</strong></h2>
-
-        <div class="grid-2" style="margin-top: 2.5rem;">
-            <div class="card elevated" style="padding: 2rem;">
-                <div class="phase-detail-header" style="padding-bottom: 1rem; margin-bottom: 1.25rem;">
-                    <div>
-                        <div class="card-label">Fase 2 · Meses 2–3</div>
-                        <h4 style="font-size: 1.5rem;">Qualificação e Venda</h4>
-                    </div>
-                    <div class="phase-detail-pricing">
-                        <div class="price" style="font-size: 1.5rem;">900 €/mês</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Playbook de qualificação de leads de imóveis</li>
-                    <li>Filtros paramétricos para parceiros wholesalers e investidores (~40)</li>
-                    <li>Templates de comunicação técnica com clientes e parceiros</li>
-                    <li>Integração com processo de venda atual</li>
-                </ul>
-                <p style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-style: italic; color: var(--text-secondary); font-size: 0.92rem; font-weight: 300; line-height: 1.5;">A nova consultora operacional tem, desde o dia 1, um sistema para qualificar oportunidades, sem depender da memória do Ruben.</p>
+        <div class="phase-detail-header">
+            <div>
+                <div class="section-label">Deliverable 2 · retainer mensal</div>
+                <h2 class="slide-title" style="margin-bottom: 0;">Sistema <strong>Contínuo</strong></h2>
             </div>
-            <div class="card elevated" style="padding: 2rem;">
-                <div class="phase-detail-header" style="padding-bottom: 1rem; margin-bottom: 1.25rem;">
-                    <div>
-                        <div class="card-label">Fase 3 · A partir do mês 4</div>
-                        <h4 style="font-size: 1.5rem;">Sistema Contínuo</h4>
-                    </div>
-                    <div class="phase-detail-pricing">
-                        <div class="price" style="font-size: 1.5rem;">650 €/mês</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Sistematização da documentação legal e notarial</li>
-                    <li>Novos playbooks por necessidade real identificada</li>
-                    <li>Suporte à expansão geográfica em curso</li>
-                    <li>Revisão mensal de métricas e ROI documentado</li>
-                </ul>
-                <p style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-style: italic; color: var(--text-secondary); font-size: 0.92rem; font-weight: 300; line-height: 1.5;">Com expansão em curso, o sistema escala sem criar novos pontos de falha. O conhecimento fica na empresa, não nas pessoas.</p>
+            <div class="phase-detail-pricing">
+                <div class="price">650 €/mês</div>
+                <div class="when">Sem compromisso mínimo</div>
             </div>
         </div>
+
+        <div class="grid-3" style="margin-top: 2rem; gap: 1.25rem;">
+            <div class="card elevated">
+                <div class="card-label">Acesso</div>
+                <h4>Sistema de busca de playbooks</h4>
+                <p>Acesso integral ao sistema peerwork de busca inteligente: a equipa descreve o desafio e recebe os playbooks mais relevantes, instantaneamente.</p>
+            </div>
+            <div class="card elevated">
+                <div class="card-label">Customização</div>
+                <h4>Até 1.000 chamados/mês</h4>
+                <p>Mil invocações mensais de prompts customizados, afinados aos contextos da Definite Concept Real Estate. Excedentes são cobrados à parte, com transparência.</p>
+            </div>
+            <div class="card elevated">
+                <div class="card-label">Biblioteca</div>
+                <h4>Playbooks generalistas</h4>
+                <p>Acesso à biblioteca completa de playbooks generalistas da peerwork, atualizada continuamente: gestão, venda, operações, jurídico e mais.</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; padding: 1.25rem 1.5rem; border-radius: 10px; background: var(--bg-warm); font-style: italic; color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.55; max-width: 1000px;">
+            Opcional após a consultoria, mas desenhado para quem quer que a IA continue a evoluir junto com a operação. O conhecimento fica sempre na empresa, o sistema apenas amplifica.
+        </p>
     </div>
     <footer class="slide-footer">
         <span class="footer-mark">peerwork · Intelligence, paired.</span>
@@ -1442,7 +1442,7 @@
 <!-- ─── SLIDE 9: COMO TRABALHAMOS ─── -->
 <section class="slide warm">
     <header class="slide-header">
-        <span>04 · Como trabalhamos</span>
+        <span class="slide-header-label">04 · Como trabalhamos</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
@@ -1475,7 +1475,7 @@
                 <div class="principle-num">04</div>
                 <div class="principle-content">
                     <h4>O conhecimento fica na empresa.</h4>
-                    <p>Todos os playbooks e sistemas são propriedade da Definite Real Estate. Mesmo que a relação termine, os processos ficam documentados e operacionais.</p>
+                    <p>Todos os playbooks e sistemas são propriedade da Definite Concept Real Estate. Mesmo que a relação termine, os processos ficam documentados e operacionais.</p>
                 </div>
             </div>
         </div>
@@ -1489,37 +1489,37 @@
 <!-- ─── SLIDE 10: PRÓXIMOS PASSOS ─── -->
 <section class="slide">
     <header class="slide-header">
-        <span>05 · Próximos passos</span>
+        <span class="slide-header-label">05 · Próximos passos</span>
         <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
     </header>
     <div class="slide-content">
         <div class="section-label">Como começamos</div>
-        <h2 class="slide-title">Quatro semanas até <strong>resultados concretos</strong></h2>
+        <h2 class="slide-title">Oito semanas até <strong>resultados concretos</strong></h2>
 
         <div class="timeline">
             <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div class="when">Esta semana</div>
-                <h4>Confirmação de avanço</h4>
-                <p>Resposta do Ruben com luz verde para iniciar. Proposta de data para sessão de diagnóstico de obra (90 min, presencial ou videochamada).</p>
+                <div class="when">Semanas 1 e 2</div>
+                <h4>Diagnóstico e obra</h4>
+                <p>Sessão de kick-off com o Ruben e o financeiro. Mapeamento do fluxo de obra: orçamentação, fornecedores, acompanhamento. Construção dos primeiros playbooks, onde o risco financeiro é mais imediato.</p>
             </div>
             <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div class="when">Semana 1</div>
-                <h4>Diagnóstico de obra</h4>
-                <p>Sessão com o Ruben e o financeiro. Mapeamento do fluxo real: orçamentação, fornecedores, acompanhamento. Identificação dos 3 pontos de maior risco.</p>
+                <div class="when">Semanas 3 e 4</div>
+                <h4>Gestão de Leads & Parcerias</h4>
+                <p>Triagem estruturada dos imóveis em portfólio. Critérios de qualificação para wholesalers e investidores. Sistematização da receção de imóveis externos.</p>
             </div>
             <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div class="when">Semanas 2–3</div>
-                <h4>Construção dos playbooks</h4>
-                <p>Orçamentação + seleção de fornecedores. Acompanhamento + verificação de prazos. Validados com a equipa antes de fechar.</p>
+                <div class="when">Semanas 5 e 6</div>
+                <h4>Venda e CRM</h4>
+                <p>Qualificação estruturada de compradores. Gestão dos ~40 parceiros investidores. Critérios de decisão partilhados. Comunicação proativa com cadências claras.</p>
             </div>
             <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div class="when">Semana 4</div>
-                <h4>Ativação e entrega</h4>
-                <p>A equipa usa o sistema num caso real. Ajuste fino. Métricas de sucesso definidas. Decisão conjunta sobre Fase 2.</p>
+                <div class="when">Semanas 7 e 8</div>
+                <h4>Documentação e entrega</h4>
+                <p>Checklist de documentação legal automatizada. Validação de processos multi-etapa. Ativação final com a equipa, ajuste fino, handover e métricas de sucesso definidas.</p>
             </div>
         </div>
     </div>
@@ -1532,7 +1532,7 @@
 <!-- ─── SLIDE 11: FECHO + DEMO CTA ─── -->
 <section class="slide final">
     <header class="slide-header">
-        <span>06 · Conclusão</span>
+        <span class="slide-header-label">06 · Conclusão</span>
         <span class="brand">peerwork · Intelligence paired, applied.</span>
     </header>
     <div class="slide-content">
@@ -1541,7 +1541,7 @@
             Há <em>abertura real</em> e o timing é favorável.
         </p>
         <p class="final-detail">
-            A Fase 1 pode começar esta semana, sem burocracia, sem contrato longo, sem compromisso para além de quatro semanas. Antes disso, veja como ficaria o sistema de playbooks aplicado à Definite Real Estate.
+            A consultoria pode começar esta semana, sem burocracia e sem compromissos para além das oito semanas acordadas. Antes disso, veja como ficaria o sistema de playbooks aplicado à Definite Concept Real Estate.
         </p>
 
         <a href="../" class="demo-cta">
