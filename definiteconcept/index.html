@@ -73,22 +73,22 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.85rem;
             text-decoration: none;
             color: var(--graphite);
         }
 
-        .nav-logo img {
-            height: 28px;
-            width: 28px;
-            border-radius: 6px;
+        .nav-logo .client-logo {
+            height: 42px;
+            width: auto;
+            display: block;
         }
 
-        .nav-logo .client-mark {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--graphite);
+        .nav-logo .divider {
+            width: 1px;
+            height: 26px;
+            background: var(--border);
+            display: block;
         }
 
         .nav-logo .powered {
@@ -99,12 +99,18 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            line-height: 1;
         }
 
         .nav-logo .powered img {
-            height: 14px;
-            width: 14px;
+            height: 16px;
+            width: 16px;
             border-radius: 3px;
+        }
+
+        .nav-logo .powered strong {
+            font-weight: 500;
+            color: var(--graphite);
         }
 
         .demo-banner {
@@ -871,23 +877,48 @@
         .footer-left {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1.25rem;
         }
 
-        .footer-left img {
-            height: 24px;
-            width: 24px;
+        .footer-left .footer-client-logo {
+            height: 64px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+
+        .footer-peerwork {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .footer-peerwork-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-peerwork-row img {
+            height: 18px;
+            width: 18px;
             border-radius: 4px;
         }
 
-        .footer-left span {
-            font-size: 0.9375rem;
-            font-weight: 400;
+        .footer-peerwork-row strong {
             color: var(--graphite);
+            font-weight: 500;
         }
 
         .footer-tagline {
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             color: var(--text-tertiary);
             font-style: italic;
             font-weight: 300;
@@ -896,6 +927,7 @@
         .footer-right {
             font-size: 0.8125rem;
             color: var(--text-tertiary);
+            text-align: right;
         }
 
         .footer-right a {
@@ -1084,6 +1116,29 @@
                 gap: 1.5rem;
                 text-align: center;
             }
+            .footer-left {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .footer-divider {
+                width: 60px;
+                height: 1px;
+            }
+            .footer-peerwork {
+                align-items: center;
+            }
+            .footer-right {
+                text-align: center;
+            }
+            .nav-logo {
+                gap: 0.6rem;
+            }
+            .nav-logo .client-logo {
+                height: 36px;
+            }
+            .nav-logo .powered {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
@@ -1097,11 +1152,12 @@
     <!-- NAVIGATION -->
     <nav class="nav" id="nav">
         <a href="#" class="nav-logo">
-            <span class="client-mark">Definite Concept</span>
+            <img src="assets/dc-logo.png" class="client-logo" alt="Definite Concept Real Estate">
+            <span class="divider"></span>
             <span class="powered">
                 com
                 <img src="../assets/logo.png" alt="peerwork">
-                peerwork
+                <strong>peerwork</strong>
             </span>
         </a>
         <div class="nav-links" id="navLinks">
@@ -1357,12 +1413,19 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-left">
-                <img src="../assets/logo.png" alt="peerwork">
-                <span>peerwork</span>
-                <span class="footer-tagline">Inteligência em parceria, aplicada.</span>
+                <img src="assets/dc-logo.png" class="footer-client-logo" alt="Definite Concept Real Estate">
+                <span class="footer-divider"></span>
+                <div class="footer-peerwork">
+                    <span class="footer-peerwork-row">
+                        Versão preparada com
+                        <img src="../assets/logo.png" alt="peerwork">
+                        <strong>peerwork</strong>
+                    </span>
+                    <span class="footer-tagline">Inteligência em parceria, aplicada.</span>
+                </div>
             </div>
             <div class="footer-right">
-                &copy; 2026 peerwork. Todos os direitos reservados. &nbsp;&middot;&nbsp;
+                &copy; 2026 Definite Concept &middot; Demo peerwork<br>
                 <a href="#" onclick="openModal(); return false;">Contacto</a>
             </div>
         </div>
