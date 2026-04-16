@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%230047AB'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23B8893E'/></svg>">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -17,9 +17,10 @@
         }
 
         :root {
-            --cobalt-deep: #0047AB;
-            --cobalt: #2563EB;
-            --cobalt-light: #3B82F6;
+            /* Demo Definite Concept: paleta dourada herdada da marca do cliente */
+            --cobalt-deep: #8B6914;
+            --cobalt: #B8893E;
+            --cobalt-light: #D4A857;
             --graphite: #1a1a1a;
             --text-secondary: #666;
             --text-tertiary: #999;
@@ -43,7 +44,7 @@
         }
 
         ::selection {
-            background: rgba(37, 99, 235, 0.15);
+            background: rgba(184, 137, 62, 0.15);
             color: var(--graphite);
         }
 
@@ -55,7 +56,7 @@
             right: 0;
             z-index: 1000;
             padding: 0 3rem;
-            height: 72px;
+            height: 96px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -79,14 +80,14 @@
         }
 
         .nav-logo .client-logo {
-            height: 42px;
+            height: 64px;
             width: auto;
             display: block;
         }
 
         .nav-logo .divider {
             width: 1px;
-            height: 26px;
+            height: 36px;
             background: var(--border);
             display: block;
         }
@@ -185,7 +186,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 72px 3rem 0;
+            padding: 96px 3rem 0;
             position: relative;
             overflow: hidden;
             text-align: center;
@@ -286,7 +287,7 @@
             color: var(--cobalt);
             margin-bottom: 2rem;
             padding: 0.4rem 1rem;
-            background: rgba(37, 99, 235, 0.06);
+            background: rgba(184, 137, 62, 0.06);
             border-radius: 100px;
         }
 
@@ -409,7 +410,7 @@
         .offering-icon {
             width: 48px;
             height: 48px;
-            background: rgba(37, 99, 235, 0.08);
+            background: rgba(184, 137, 62, 0.08);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -487,7 +488,7 @@
         .playbook-card:hover {
             border-color: var(--cobalt-light);
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 12px 40px rgba(184, 137, 62, 0.08);
         }
 
         .playbook-role {
@@ -536,6 +537,64 @@
             margin-top: 3rem;
         }
 
+        /* Hide playbooks beyond the first 6 by default */
+        .playbooks-grid:not(.expanded) .playbook-card.is-hidden {
+            display: none;
+        }
+
+        .playbook-card.is-hidden {
+            animation: playbookReveal 0.4s ease forwards;
+        }
+
+        @keyframes playbookReveal {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toggle-playbooks {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-family: var(--font);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--graphite);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-playbooks:hover {
+            border-color: var(--cobalt-light);
+            color: var(--cobalt);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(184, 137, 62, 0.08);
+        }
+
+        .toggle-playbooks svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s ease;
+        }
+
+        .playbooks-grid.expanded ~ .playbooks-more .toggle-playbooks svg {
+            transform: rotate(180deg);
+        }
+
         /* ─── PLAYBOOK SEARCH ─── */
         .playbook-search {
             max-width: 640px;
@@ -578,7 +637,7 @@
 
         .playbook-search-box input:focus {
             border-color: var(--cobalt-light);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 0 0 4px rgba(184, 137, 62, 0.08);
         }
 
         .playbook-search-box input:focus + svg {
@@ -640,9 +699,9 @@
         }
 
         .search-result-card:hover {
-            background: rgba(37, 99, 235, 0.04);
+            background: rgba(184, 137, 62, 0.04);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 8px 24px rgba(184, 137, 62, 0.1);
         }
 
         .search-result-info h4 {
@@ -664,7 +723,7 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: var(--cobalt);
-            background: rgba(37, 99, 235, 0.08);
+            background: rgba(184, 137, 62, 0.08);
             padding: 0.3rem 0.7rem;
             border-radius: 20px;
             white-space: nowrap;
@@ -718,7 +777,7 @@
         .approach-number {
             font-size: 4rem;
             font-weight: 200;
-            color: rgba(37, 99, 235, 0.12);
+            color: rgba(184, 137, 62, 0.12);
             line-height: 1;
             margin-bottom: 1.5rem;
         }
@@ -787,13 +846,13 @@
         }
 
         .value-card:hover {
-            border-color: rgba(37, 99, 235, 0.3);
+            border-color: rgba(184, 137, 62, 0.3);
         }
 
         .value-num {
             font-size: 2.5rem;
             font-weight: 200;
-            color: rgba(37, 99, 235, 0.15);
+            color: rgba(184, 137, 62, 0.15);
             margin-bottom: 1rem;
         }
 
@@ -1130,14 +1189,27 @@
             .footer-right {
                 text-align: center;
             }
+            .nav {
+                height: 80px;
+                padding: 0 1.5rem;
+            }
+            .hero {
+                padding-top: 80px;
+            }
             .nav-logo {
                 gap: 0.6rem;
             }
             .nav-logo .client-logo {
-                height: 36px;
+                height: 52px;
+            }
+            .nav-logo .divider {
+                height: 30px;
             }
             .nav-logo .powered {
                 font-size: 0.65rem;
+            }
+            .footer-left .footer-client-logo {
+                height: 80px;
             }
         }
     </style>
@@ -1162,8 +1234,7 @@
         </a>
         <div class="nav-links" id="navLinks">
             <a href="#playbooks">Playbooks</a>
-            <a href="#consulting">Abordagem</a>
-            <a href="#values">Sobre</a>
+            <a href="#abordagem">Abordagem</a>
             <a href="#" class="nav-cta" onclick="openModal(); return false;">Falar connosco</a>
         </div>
         <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
@@ -1179,44 +1250,14 @@
             Inteligência em parceria,<br><span class="hero-applied">aplicada<span class="hero-applied-circle"><svg viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M 170 10 C 210 -5, 215 25, 195 55 C 175 80, 100 85, 50 72 C 5 60, -15 35, 15 18 C 40 3, 100 -8, 160 8 C 185 14, 195 22, 180 28"/></svg></span></span>.
         </h1>
         <div class="hero-body">
-            <h2>O trabalho da Definite Concept, com o melhor parceiro possível. Hoje.</h2>
-            <p>A Peerwork ajuda profissionais e empresas a usar IA de forma prática, com playbooks estruturados para implementação imediata e consultoria especializada para desafios complexos. Esta versão foi preparada para o setor imobiliário.</p>
+            <h2>Playbooks de IA desenhados para o trabalho real da Definite Concept.</h2>
+            <p>Do primeiro contacto com o lead à entrega final do empreendimento, dez playbooks prontos a usar pelas equipas comercial, técnica, jurídica e de gestão. Estruturados, validados e com decisão humana sempre no centro.</p>
         </div>
         <div class="hero-actions">
             <a href="#playbooks" class="btn-primary">
                 Explorar playbooks
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-            <a href="#" class="btn-secondary" onclick="openModal(); return false;">Falar connosco</a>
-        </div>
-    </section>
-
-    <!-- WHAT WE DO -->
-    <section class="section what-we-do" id="consulting">
-        <div class="section-inner">
-            <div class="section-label">O que fazemos</div>
-            <h2 class="section-title">IA que funciona <strong>no mundo real</strong></h2>
-            <p class="section-subtitle">
-                Sem teoria. Sem hype. Inteligência estruturada para o momento do problema, com julgamento humano sempre no centro da decisão.
-            </p>
-            <div class="offerings-grid">
-                <div class="offering-card fade-up">
-                    <h3>Playbooks</h3>
-                    <p>Guias estruturados, específicos para cada função, prontos para implementação imediata. Cada playbook responde a uma necessidade real do profissional: prático, claro, pronto a usar desde o primeiro dia.</p>
-                    <a href="#playbooks" class="offering-link">
-                        Ver playbooks
-                        <svg viewBox="0 0 24 24"><path d="M5 12h14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><path d="m12 5 7 7-7 7" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
-                <div class="offering-card fade-up">
-                    <h3>Consultoria especializada</h3>
-                    <p>Para desafios que exigem um olhar mais profundo. Trabalhamos lado a lado com a sua equipa para desenhar estratégias de integração de IA adaptadas aos seus fluxos de trabalho e restrições específicas.</p>
-                    <a href="#" class="offering-link" onclick="openModal(); return false;">
-                        Saber mais
-                        <svg viewBox="0 0 24 24"><path d="M5 12h14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><path d="m12 5 7 7-7 7" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1236,7 +1277,7 @@
                 <div class="search-results" id="searchResults"></div>
             </div>
 
-            <div class="playbooks-grid">
+            <div class="playbooks-grid" id="playbooksGrid">
                 <div class="playbook-card fade-up" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                     <div class="playbook-role">01 · Comercial</div>
@@ -1273,25 +1314,25 @@
                     <h4>Relatório de Visita Técnica</h4>
                     <p>A IA estrutura as notas da visita em relatório formal com identificação de anomalias, prioridades de intervenção e estimativas de custo. O técnico valida e assina.</p>
                 </div>
-                <div class="playbook-card fade-up" onclick="openModal()">
+                <div class="playbook-card fade-up is-hidden" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                     <div class="playbook-role">07 · Obra</div>
                     <h4>Acompanhamento de Obra e Desvios</h4>
                     <p>A IA monitoriza o registo de progresso, identifica desvios face ao plano e sinaliza alertas. O gestor de projeto decide ações corretivas.</p>
                 </div>
-                <div class="playbook-card fade-up" onclick="openModal()">
+                <div class="playbook-card fade-up is-hidden" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                     <div class="playbook-role">08 · Jurídico</div>
                     <h4>Due Diligence Documental</h4>
                     <p>A IA verifica a checklist de documentação necessária para transação, identifica lacunas e organiza o dossier. O jurista valida a completude e a conformidade.</p>
                 </div>
-                <div class="playbook-card fade-up" onclick="openModal()">
+                <div class="playbook-card fade-up is-hidden" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                     <div class="playbook-role">09 · Marketing</div>
                     <h4>Conteúdo para Promoção de Empreendimento</h4>
                     <p>A IA gera variações de copy para diferentes canais e fases de campanha (lançamento, sustentação, fecho). A equipa de marketing valida e publica.</p>
                 </div>
-                <div class="playbook-card fade-up" onclick="openModal()">
+                <div class="playbook-card fade-up is-hidden" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                     <div class="playbook-role">10 · Direção</div>
                     <h4>Gestão de Pipeline Comercial Imobiliário</h4>
@@ -1299,15 +1340,16 @@
                 </div>
             </div>
             <div class="playbooks-more">
-                <a href="#" class="btn-secondary" onclick="openModal(); return false;">
-                    Quer um playbook desenhado para uma necessidade específica? Falar connosco
-                </a>
+                <button type="button" class="toggle-playbooks" id="togglePlaybooks" aria-expanded="false">
+                    <span class="toggle-label">Ver mais playbooks</span>
+                    <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- APPROACH -->
-    <section class="section" style="background: var(--bg);">
+    <section class="section" id="abordagem" style="background: var(--bg);">
         <div class="section-inner">
             <div class="section-label">Como funciona</div>
             <h2 class="section-title">Simples de começar, <strong>feito para durar</strong></h2>
@@ -1331,81 +1373,6 @@
                     <p>A IA melhora quando se compreende como funciona. Construímos conhecimento dentro do sistema, e não apenas na cabeça de uma pessoa.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- QUOTE -->
-    <section class="quote-section">
-        <div class="quote-inner fade-up">
-            <p class="quote-text">
-                Não vendemos o futuro.<br>Resolvemos o <em>problema de hoje</em>: quando o melhor especialista não está disponível, a qualidade do trabalho cai.
-            </p>
-            <div class="quote-attr">peerwork. Inteligência em parceria, aplicada.</div>
-        </div>
-    </section>
-
-    <!-- VALUES -->
-    <section class="section" id="values">
-        <div class="section-inner">
-            <div class="section-label">No que acreditamos</div>
-            <h2 class="section-title">Princípios que <strong>orientam tudo</strong></h2>
-            <p class="section-subtitle">
-                Não são slogans de marketing. São a bússola por trás de cada decisão que tomamos: no produto, na comunicação e na cultura.
-            </p>
-            <div class="values-grid">
-                <div class="value-card fade-up">
-                    <div class="value-num">01</div>
-                    <h4>Parceira, não substituta</h4>
-                    <p>A IA não é uma substituição. É um complemento que o torna melhor naquilo que já faz, entregando resultados mais fortes a trabalhar lado a lado com a sua experiência.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">02</div>
-                    <h4>Real antes de ideal</h4>
-                    <p>O trabalho real tem prioridade absoluta sobre demos polidas. O utilizador trabalha no terreno, sob pressão, com prazos reais.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">03</div>
-                    <h4>Honestidade estrutural</h4>
-                    <p>Dizemos primeiro o que a IA não faz antes de dizer o que faz. Os limites são visíveis. A confiança constrói-se com transparência.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">04</div>
-                    <h4>Sistémico, não individual</h4>
-                    <p>O impacto real não é uma pessoa ser mais produtiva. É a organização tornar-se mais resiliente. Conhecimento no sistema, não apenas em cabeças.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">05</div>
-                    <h4>Precisão com proximidade</h4>
-                    <p>Técnica e rigorosa, mas nunca fria. O profissional é um ser humano com pressões reais, e a Peerwork respeita isso.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">06</div>
-                    <h4>No momento do problema</h4>
-                    <p>Inteligência entregue quando e onde é precisa. Não numa sala de formação, não numa apresentação. No fluxo de trabalho, no ponto da decisão.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">07</div>
-                    <h4>Julgamento humano no centro</h4>
-                    <p>A IA aumenta, nunca substitui. Cada playbook, cada recomendação mantém o humano como decisor final. Sempre.</p>
-                </div>
-                <div class="value-card fade-up">
-                    <div class="value-num">08</div>
-                    <h4>Concreto sobre abstrato</h4>
-                    <p>Falamos sobre o que fazemos: playbooks, guardrails, fluxos de trabalho reais. Sem jargão, sem promessas vazias. Cada palavra tem um propósito.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="cta-inner fade-up">
-            <h2>Pronto para trabalhar com uma melhor parceria?</h2>
-            <p>Quer precise de um playbook para uma função específica, quer prefira consultoria para a sua equipa, vamos conversar sobre como a IA pode trabalhar para a Definite Concept, de forma prática.</p>
-            <a href="#" class="btn-white" onclick="openModal(); return false;">
-                Falar connosco
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
         </div>
     </section>
 
@@ -1683,6 +1650,21 @@
         searchInput.addEventListener('input', () => {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => performSearch(searchInput.value), 300);
+        });
+
+        // Expand/collapse playbooks
+        const playbooksGrid = document.getElementById('playbooksGrid');
+        const togglePlaybooks = document.getElementById('togglePlaybooks');
+        const toggleLabel = togglePlaybooks.querySelector('.toggle-label');
+        const hiddenCount = playbooksGrid.querySelectorAll('.is-hidden').length;
+
+        togglePlaybooks.addEventListener('click', () => {
+            const expanded = playbooksGrid.classList.toggle('expanded');
+            togglePlaybooks.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            toggleLabel.textContent = expanded ? 'Mostrar menos' : 'Ver mais playbooks';
+            if (!expanded) {
+                playbooksGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
 
         // Scroll animations
