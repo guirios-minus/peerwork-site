@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta · Definite Real Estate × peerwork</title>
+    <meta name="description" content="Proposta comercial peerwork para a Definite Real Estate. Sistema de Decisão Assistida. Abril 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23B8893E'/></svg>">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-deep: #8B6914;
+            --gold: #B8893E;
+            --gold-light: #D4A857;
+            --graphite: #1a1a1a;
+            --text-secondary: #555;
+            --text-tertiary: #888;
+            --border: #e8e8e8;
+            --border-strong: #d4d4d4;
+            --bg: #fafafa;
+            --bg-warm: #faf6ee;
+            --white: #ffffff;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--graphite);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(184, 137, 62, 0.18);
+            color: var(--graphite);
+        }
+
+        /* ─── SLIDE LAYOUT ─── */
+        .slide {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 5vh 6vw;
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .slide + .slide {
+            border-top: 1px solid var(--border);
+        }
+
+        .slide.dark {
+            background: var(--graphite);
+            color: var(--white);
+        }
+
+        .slide.warm {
+            background: var(--bg-warm);
+        }
+
+        /* ─── SLIDE HEADER & FOOTER ─── */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 4vh;
+        }
+
+        .slide-header .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .slide-header .brand img {
+            height: 16px;
+            width: 16px;
+            border-radius: 3px;
+        }
+
+        .slide.dark .slide-header {
+            color: rgba(255,255,255,0.55);
+        }
+        .slide.dark .slide-header .brand {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            margin-top: 4vh;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .slide-footer .footer-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .slide.dark .slide-footer {
+            color: rgba(255,255,255,0.45);
+            border-top-color: rgba(255,255,255,0.12);
+        }
+
+        /* ─── TYPOGRAPHY ─── */
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+        }
+
+        .slide-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 0.75rem;
+        }
+
+        .slide-title {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--graphite);
+        }
+
+        .slide-title strong {
+            font-weight: 500;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 900px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        /* ─── CARDS / GRIDS ─── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem 1.5rem;
+        }
+
+        .card.elevated {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+
+        .card .card-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.65rem;
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.55;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* ─── COVER ─── */
+        .cover {
+            background:
+                radial-gradient(ellipse at top right, rgba(184, 137, 62, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at bottom left, rgba(184, 137, 62, 0.08) 0%, transparent 55%),
+                var(--white);
+        }
+
+        .cover .slide-content {
+            justify-content: space-between;
+            padding-top: 2vh;
+        }
+
+        .cover-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .cover-brand img {
+            height: 32px;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .cover-brand .wordmark {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--graphite);
+        }
+
+        .cover-brand .tagline {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        .cover-main {
+            margin: auto 0;
+        }
+
+        .cover-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-title {
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            color: var(--graphite);
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-title strong {
+            font-weight: 500;
+        }
+
+        .cover-client {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1rem 1.5rem 1rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-top: 1rem;
+        }
+
+        .cover-client img {
+            height: 56px;
+            width: auto;
+            display: block;
+        }
+
+        .cover-client .for {
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .cover-client .name {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-top: 0.1rem;
+        }
+
+        .cover-meta {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .cover-meta span strong {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ─── ABOUT (slide 2) ─── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .principle-quote {
+            margin-top: 1.5rem;
+            padding: 1.5rem 1.75rem;
+            border-left: 3px solid var(--gold);
+            background: var(--bg-warm);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .principle-quote p {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--graphite);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .founders {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .founder {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--white);
+        }
+
+        .founder-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .founder-info .founder-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.15rem;
+        }
+
+        .founder-info .founder-role {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .pull-quote {
+            grid-column: 1 / -1;
+            margin-top: 0.5rem;
+            padding: 1.25rem 0 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.5;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ─── DIAGNOSTIC GRID ─── */
+        .diagnostic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .diagnostic-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            background: var(--white);
+        }
+
+        .diagnostic-card .label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.65rem;
+        }
+
+        .diagnostic-card .value {
+            font-size: 0.92rem;
+            color: var(--graphite);
+            font-weight: 400;
+            line-height: 1.45;
+        }
+
+        .diagnostic-card .value span {
+            display: block;
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 0.88rem;
+            margin-top: 0.3rem;
+        }
+
+        .central-pattern {
+            margin-top: 2rem;
+            padding: 1.5rem 1.75rem;
+            background: var(--bg-warm);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--graphite);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 1100px;
+        }
+
+        .central-pattern strong {
+            color: var(--gold-deep);
+            font-weight: 600;
+        }
+
+        /* ─── PRIORITY BAR (slide 4) ─── */
+        .priority-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.5rem 1rem;
+            background: rgba(184, 137, 62, 0.1);
+            border: 1px solid rgba(184, 137, 62, 0.3);
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-deep);
+            margin-bottom: 1.25rem;
+        }
+
+        /* ─── PHASES (slide 6) ─── */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .phase-card {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 1.5rem;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phase-card.current {
+            border-color: var(--gold);
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--white) 60%);
+            box-shadow: 0 12px 40px rgba(184, 137, 62, 0.1);
+        }
+
+        .phase-num {
+            font-size: 1.9rem;
+            font-weight: 200;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .phase-card .phase-when {
+            font-size: 0.74rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            margin-bottom: 0.85rem;
+        }
+
+        .phase-pricing {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .phase-price {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--gold-deep);
+            line-height: 1;
+        }
+
+        .phase-pricing-label {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 0.35rem;
+        }
+
+        .total-callout {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--graphite);
+            color: var(--white);
+            border-radius: 12px;
+        }
+
+        .total-callout .label {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .total-callout .label strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            color: var(--white);
+            margin-top: 0.3rem;
+        }
+
+        .total-callout .value {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--gold-light);
+            letter-spacing: -0.02em;
+        }
+
+        /* ─── PHASE DETAIL (slide 7) ─── */
+        .phase-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .phase-detail-pricing {
+            text-align: right;
+        }
+
+        .phase-detail-pricing .price {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--gold-deep);
+            line-height: 1;
+        }
+
+        .phase-detail-pricing .when {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 0.4rem;
+        }
+
+        .phase-detail-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .deliverables h5,
+        .value-block h5,
+        .metrics-block h5 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .deliverables ul {
+            list-style: none;
+        }
+
+        .deliverables li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.92rem;
+            color: var(--graphite);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .deliverables li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            background: var(--white);
+        }
+
+        .value-block p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.65;
+        }
+
+        .metrics-block ul {
+            list-style: none;
+        }
+
+        .metrics-block li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            padding: 0.55rem 0;
+            border-bottom: 1px dashed var(--border);
+            line-height: 1.4;
+        }
+
+        .metrics-block li:last-child { border-bottom: none; }
+
+        /* ─── PRINCIPLES (slide 9) ─── */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .principle-card {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .principle-num {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--gold);
+            line-height: 1;
+            flex-shrink: 0;
+            min-width: 56px;
+        }
+
+        .principle-content h4 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .principle-content p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.55;
+        }
+
+        /* ─── TIMELINE (slide 10) ─── */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 8%;
+            right: 8%;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .timeline-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--gold);
+            margin: 0 auto 1rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .timeline-step .when {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .timeline-step h4 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.65rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .timeline-step p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        /* ─── FINAL SLIDE ─── */
+        .final {
+            background:
+                radial-gradient(ellipse at top right, rgba(184, 137, 62, 0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom left, rgba(184, 137, 62, 0.1) 0%, transparent 60%),
+                var(--graphite);
+            color: var(--white);
+        }
+
+        .final .slide-content {
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .final-quote {
+            font-size: clamp(1.6rem, 3vw, 2.5rem);
+            font-weight: 300;
+            line-height: 1.35;
+            color: var(--white);
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            letter-spacing: -0.015em;
+        }
+
+        .final-quote em {
+            color: var(--gold-light);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .final-detail {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .demo-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1.1rem 2rem 1.1rem 1.5rem;
+            background: var(--gold);
+            color: var(--graphite);
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: -0.005em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 12px 40px rgba(184, 137, 62, 0.35);
+        }
+
+        .demo-cta:hover {
+            transform: translateY(-2px);
+            background: var(--gold-light);
+            box-shadow: 0 18px 50px rgba(184, 137, 62, 0.5);
+        }
+
+        .demo-cta .arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--graphite);
+            color: var(--gold);
+        }
+
+        .demo-cta svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .final-cta-helper {
+            margin-top: 1rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .final-signature {
+            margin-top: auto;
+            padding-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .final-signature strong {
+            display: block;
+            font-style: normal;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        /* ─── PRINT TOOLBAR ─── */
+        .print-toolbar {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--graphite);
+            color: var(--white);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            z-index: 100;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font);
+            transition: transform 0.2s ease;
+        }
+
+        .print-toolbar:hover {
+            transform: translateY(-2px);
+        }
+
+        .print-toolbar svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ─── RESPONSIVE (screen only) ─── */
+        @media screen and (max-width: 760px) {
+            .grid-2, .grid-3, .grid-4,
+            .diagnostic-grid, .phases-grid,
+            .phase-detail-grid, .principles-grid,
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            .timeline::before { display: none; }
+            .phase-detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .phase-detail-pricing { text-align: left; }
+            .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .total-callout { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .cover-meta { flex-direction: column; gap: 1rem; }
+            .slide { padding: 6vh 5vw; }
+        }
+
+        /* ─── PRINT (PDF) ─── */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
+            html, body {
+                background: var(--white);
+            }
+
+            .slide {
+                width: 100%;
+                height: 100vh;
+                min-height: auto;
+                page-break-after: always;
+                page-break-inside: avoid;
+                padding: 8mm 12mm;
+                border: none !important;
+            }
+
+            .slide:last-child {
+                page-break-after: auto;
+            }
+
+            .slide.dark, .final {
+                background: var(--graphite) !important;
+                color: var(--white) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .slide-title { font-size: 2.4rem; }
+            .cover-title { font-size: 3rem; }
+            .slide-content { padding: 0; }
+            .print-toolbar { display: none !important; }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── SLIDE 1: COVER ─── -->
+<section class="slide cover">
+    <div class="slide-content">
+        <header class="cover-brand">
+            <img src="../../assets/logo.png" alt="peerwork">
+            <div>
+                <span class="wordmark">peerwork</span>
+                <span class="tagline">Intelligence paired, applied.</span>
+            </div>
+        </header>
+
+        <div class="cover-main">
+            <div class="cover-eyebrow">Proposta Comercial · Abril 2026</div>
+            <h1 class="cover-title">Sistema de<br><strong>Decisão Assistida</strong></h1>
+
+            <div class="cover-client">
+                <img src="../assets/dc-logo.png" alt="Definite Real Estate">
+                <div>
+                    <div class="for">Preparada para</div>
+                    <div class="name">Definite Real Estate · Ruben Sousa</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-meta">
+            <span><strong>Preparada por</strong>Margarida Pinto</span>
+            <span><strong>Data</strong>Abril 2026</span>
+            <span><strong>Estatuto</strong>Confidencial</span>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SLIDE 2: SOBRE A PEERWORK ─── -->
+<section class="slide">
+    <header class="slide-header">
+        <span>01 · Contexto</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">Sobre a peerwork</div>
+        <h2 class="slide-title">A camada operacional que <strong>integra IA no trabalho real</strong></h2>
+
+        <div class="about-grid">
+            <div>
+                <p class="lead">Integramos inteligência artificial no fluxo real de trabalho através de playbooks estruturados, com guardrails ativos e validação humana obrigatória em cada etapa crítica.</p>
+                <div class="principle-quote">
+                    <p>A IA estrutura. O humano decide. Sempre.</p>
+                </div>
+            </div>
+            <div>
+                <div class="slide-eyebrow">Os fundadores</div>
+                <div class="founders">
+                    <div class="founder">
+                        <div class="founder-avatar">MP</div>
+                        <div class="founder-info">
+                            <div class="founder-name">Margarida Pinto</div>
+                            <div class="founder-role">Brand Strategist & AI Operational Systems</div>
+                        </div>
+                    </div>
+                    <div class="founder">
+                        <div class="founder-avatar">GR</div>
+                        <div class="founder-info">
+                            <div class="founder-name">Gui Rios</div>
+                            <div class="founder-role">Co-fundador & Produto</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="pull-quote">"Não somos formação. Somos a camada operacional que integra IA no trabalho real."</p>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 3: DIAGNÓSTICO PRELIMINAR ─── -->
+<section class="slide warm">
+    <header class="slide-header">
+        <span>02 · Diagnóstico preliminar</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">O que identificámos na reunião</div>
+        <h2 class="slide-title">Decisões recorrentes <strong>dependentes de memória individual</strong></h2>
+
+        <div class="central-pattern">
+            <strong>Padrão central:</strong> qualificação de imóveis, orçamentação de obra, seleção de fornecedores e validação de documentação dependem de memória humana e julgamento individual. O risco está na variabilidade e no tempo perdido, não na falta de competência.
+        </div>
+
+        <div class="diagnostic-grid">
+            <div class="diagnostic-card">
+                <div class="label">Estrutura</div>
+                <div class="value">Veículo de compra, empresa de obras (fix & sell), empresa de venda</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="label">Equipa Core</div>
+                <div class="value">CEO + Consultor + Financeiro<span>Consultora operacional em entrada</span></div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="label">Escala atual</div>
+                <div class="value">~40 parceiros investidores<span>~5/6 imóveis em simultâneo</span></div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="label">IA hoje</div>
+                <div class="value">Uso pontual de Claude.ai<span>Abertura a adoção estruturada</span></div>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 4: GESTÃO DE OBRA ─── -->
+<section class="slide">
+    <header class="slide-header">
+        <span>02 · Diagnóstico · Gestão de Obra</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="priority-flag">⚑ Prioridade máxima · Maior risco e impacto imediato</div>
+        <h2 class="slide-title">Gestão de obra: <strong>onde o risco financeiro é mais direto</strong></h2>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card elevated">
+                <div class="card-label">Pré-obra</div>
+                <ul>
+                    <li>Orçamentação em Excel sem validação estruturada</li>
+                    <li>Vários projetos simultâneos sem sistema de controlo</li>
+                    <li>Seleção de fornecedores sem critério parametrizado</li>
+                    <li>Sem histórico de fornecedores ou desempenho registado</li>
+                </ul>
+            </div>
+            <div class="card elevated">
+                <div class="card-label">Acompanhamento</div>
+                <ul>
+                    <li>Controlo de fases dependente do CEO ou do financeiro</li>
+                    <li>Verificação de prazos e cronograma sem alertas</li>
+                    <li>Gestão de fornecedores concentrada no financeiro</li>
+                    <li>Sem sistema de verificação automática de desvios</li>
+                </ul>
+            </div>
+            <div class="card elevated">
+                <div class="card-label">Consequências financeiras</div>
+                <ul>
+                    <li>Atrasos não detetados geram custos adicionais diretos</li>
+                    <li>Pagamentos sem validação de fases concluídas</li>
+                    <li>Decisões que podiam ser delegadas ficam no CEO</li>
+                    <li>Risco de erro com impacto financeiro irreversível</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 5: RESTANTES PROCESSOS ─── -->
+<section class="slide warm">
+    <header class="slide-header">
+        <span>02 · Diagnóstico · Restantes processos</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">Mapeados na discovery call · fases seguintes</div>
+        <h2 class="slide-title">Próximos pontos de risco <strong>já identificados</strong></h2>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <div class="card-label">Fase 2 · 02</div>
+                <h4>Gestão de Leads & Parcerias</h4>
+                <ul>
+                    <li>~5/6 imóveis em simultâneo sem triagem estruturada</li>
+                    <li>Wholesalers sem critério de qualificação definido</li>
+                    <li>Receção de imóveis externos sem sistematização</li>
+                    <li>Estratégia de marketing digital ausente ou em construção</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-label">Fase 2 · 03</div>
+                <h4>Venda e CRM</h4>
+                <ul>
+                    <li>Gestão dos ~40 parceiros investidores manual</li>
+                    <li>Sem qualificação estruturada de compradores</li>
+                    <li>Critério de decisão dependente de memória individual</li>
+                    <li>Comunicação reativa, não proativa</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-label">Fase 3 · 04</div>
+                <h4>Documentação Legal</h4>
+                <ul>
+                    <li>Checklist de documentos manual ou inexistente</li>
+                    <li>Processo de validação legal não sistematizado</li>
+                    <li>Risco de omissão em processos com múltiplas etapas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 6: PROPOSTA · 3 FASES ─── -->
+<section class="slide">
+    <header class="slide-header">
+        <span>03 · Proposta</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">Três fases. Valor em cada uma.</div>
+        <h2 class="slide-title">Cada fase resolve um problema real <strong>antes de avançar</strong></h2>
+        <p class="slide-subtitle" style="margin-bottom: 1.5rem;">Sem contrato longo. Sem compromisso para além do que faz sentido. Avançamos quando os resultados da fase anterior justificam.</p>
+
+        <div class="phases-grid" style="margin-top: 0.5rem;">
+            <div class="phase-card current">
+                <div class="phase-num">01</div>
+                <h4>Estrutura de Obra</h4>
+                <div class="phase-when">Semanas 1–4</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">Sistema de orçamentação, seleção de fornecedores e acompanhamento de obra. Onde o risco financeiro é mais imediato.</p>
+                <div class="phase-pricing">
+                    <div class="phase-price">1.500 €</div>
+                    <div class="phase-pricing-label">Fee de setup · pagamento único</div>
+                </div>
+            </div>
+            <div class="phase-card">
+                <div class="phase-num">02</div>
+                <h4>Qualificação e Venda</h4>
+                <div class="phase-when">Meses 2–3</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">A consultora operacional opera com sistema de qualificação desde o dia 1, sem depender da memória do Ruben.</p>
+                <div class="phase-pricing">
+                    <div class="phase-price">900 €/mês</div>
+                    <div class="phase-pricing-label">2 meses · 1.800 € total</div>
+                </div>
+            </div>
+            <div class="phase-card">
+                <div class="phase-num">03</div>
+                <h4>Sistema Contínuo</h4>
+                <div class="phase-when">A partir do mês 4</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; margin-bottom: 0;">Documentação legal, suporte à expansão geográfica e novos playbooks por necessidade identificada.</p>
+                <div class="phase-pricing">
+                    <div class="phase-price">650 €/mês</div>
+                    <div class="phase-pricing-label">Retainer mensal</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-callout" style="margin-top: 1.5rem;">
+            <div class="label">Investimento total ano 1<strong>12 meses, três fases</strong></div>
+            <div class="value">~ 12.100 €</div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 7: FASE 1 DETALHE ─── -->
+<section class="slide warm">
+    <header class="slide-header">
+        <span>03 · Proposta · Fase 1</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="phase-detail-header">
+            <div>
+                <div class="section-label">Fase 1 · Semanas 1–4</div>
+                <h2 class="slide-title" style="margin-bottom: 0;">Estrutura de <strong>Obra</strong></h2>
+            </div>
+            <div class="phase-detail-pricing">
+                <div class="price">1.500 €</div>
+                <div class="when">Fee de setup</div>
+            </div>
+        </div>
+
+        <div class="phase-detail-grid">
+            <div class="deliverables">
+                <h5>O que entregamos</h5>
+                <ul>
+                    <li>Diagnóstico detalhado do processo de obra atual</li>
+                    <li>Playbook de orçamentação assistida (pré-obra)</li>
+                    <li>Sistema de critérios para seleção de fornecedores</li>
+                    <li>Playbook de acompanhamento e controlo de fases</li>
+                    <li>Checklists de verificação de prazos e aprovações</li>
+                    <li>Prompts prontos a usar para análise e decisão</li>
+                    <li>Sessão de ativação com a equipa (2 horas)</li>
+                </ul>
+            </div>
+            <div class="value-block">
+                <h5>Valor para o Ruben</h5>
+                <p>O acompanhamento de obra deixa de depender do CEO. Qualquer membro da equipa sabe o estado atual de cada projeto, o que falta validar, quais os prazos em risco, sem escalar tudo para o Ruben.</p>
+            </div>
+            <div class="metrics-block">
+                <h5>Métricas de sucesso</h5>
+                <ul>
+                    <li>Redução de tempo por orçamento</li>
+                    <li>Desvios de prazo detetados antes de custarem</li>
+                    <li>Decisões de fornecedor documentadas e comparáveis</li>
+                    <li>Aprovações de fase com registo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 8: FASES 2 E 3 ─── -->
+<section class="slide">
+    <header class="slide-header">
+        <span>03 · Proposta · Fases 2 e 3</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">Continuidade após validação da Fase 1</div>
+        <h2 class="slide-title">Avanço progressivo, <strong>sem compromisso antecipado</strong></h2>
+
+        <div class="grid-2" style="margin-top: 2.5rem;">
+            <div class="card elevated" style="padding: 2rem;">
+                <div class="phase-detail-header" style="padding-bottom: 1rem; margin-bottom: 1.25rem;">
+                    <div>
+                        <div class="card-label">Fase 2 · Meses 2–3</div>
+                        <h4 style="font-size: 1.5rem;">Qualificação e Venda</h4>
+                    </div>
+                    <div class="phase-detail-pricing">
+                        <div class="price" style="font-size: 1.5rem;">900 €/mês</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Playbook de qualificação de leads de imóveis</li>
+                    <li>Filtros paramétricos para parceiros wholesalers e investidores (~40)</li>
+                    <li>Templates de comunicação técnica com clientes e parceiros</li>
+                    <li>Integração com processo de venda atual</li>
+                </ul>
+                <p style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-style: italic; color: var(--text-secondary); font-size: 0.92rem; font-weight: 300; line-height: 1.5;">A nova consultora operacional tem, desde o dia 1, um sistema para qualificar oportunidades, sem depender da memória do Ruben.</p>
+            </div>
+            <div class="card elevated" style="padding: 2rem;">
+                <div class="phase-detail-header" style="padding-bottom: 1rem; margin-bottom: 1.25rem;">
+                    <div>
+                        <div class="card-label">Fase 3 · A partir do mês 4</div>
+                        <h4 style="font-size: 1.5rem;">Sistema Contínuo</h4>
+                    </div>
+                    <div class="phase-detail-pricing">
+                        <div class="price" style="font-size: 1.5rem;">650 €/mês</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Sistematização da documentação legal e notarial</li>
+                    <li>Novos playbooks por necessidade real identificada</li>
+                    <li>Suporte à expansão geográfica em curso</li>
+                    <li>Revisão mensal de métricas e ROI documentado</li>
+                </ul>
+                <p style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-style: italic; color: var(--text-secondary); font-size: 0.92rem; font-weight: 300; line-height: 1.5;">Com expansão em curso, o sistema escala sem criar novos pontos de falha. O conhecimento fica na empresa, não nas pessoas.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 9: COMO TRABALHAMOS ─── -->
+<section class="slide warm">
+    <header class="slide-header">
+        <span>04 · Como trabalhamos</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">O que não muda em nenhuma fase</div>
+        <h2 class="slide-title">Quatro princípios <strong>que estruturam o trabalho</strong></h2>
+
+        <div class="principles-grid">
+            <div class="principle-card">
+                <div class="principle-num">01</div>
+                <div class="principle-content">
+                    <h4>A IA estrutura. O Ruben decide.</h4>
+                    <p>Nenhum sistema toma decisões pelo cliente. A aprovação final é sempre humana. O que muda é a velocidade e a qualidade da informação no momento da decisão.</p>
+                </div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-num">02</div>
+                <div class="principle-content">
+                    <h4>Valor antes de avançar.</h4>
+                    <p>Cada fase só começa quando a anterior demonstrou resultados concretos. Não há pressão para acelerar. Só há razão para avançar quando faz sentido.</p>
+                </div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-num">03</div>
+                <div class="principle-content">
+                    <h4>Sem dependência do consultor.</h4>
+                    <p>O objetivo é que a equipa opere de forma autónoma. O trabalho da peerwork é tornar-se cada vez menos necessário na operação diária.</p>
+                </div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-num">04</div>
+                <div class="principle-content">
+                    <h4>O conhecimento fica na empresa.</h4>
+                    <p>Todos os playbooks e sistemas são propriedade da Definite Real Estate. Mesmo que a relação termine, os processos ficam documentados e operacionais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 10: PRÓXIMOS PASSOS ─── -->
+<section class="slide">
+    <header class="slide-header">
+        <span>05 · Próximos passos</span>
+        <span class="brand"><img src="../../assets/logo.png" alt="peerwork">peerwork</span>
+    </header>
+    <div class="slide-content">
+        <div class="section-label">Como começamos</div>
+        <h2 class="slide-title">Quatro semanas até <strong>resultados concretos</strong></h2>
+
+        <div class="timeline">
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="when">Esta semana</div>
+                <h4>Confirmação de avanço</h4>
+                <p>Resposta do Ruben com luz verde para iniciar. Proposta de data para sessão de diagnóstico de obra (90 min, presencial ou videochamada).</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="when">Semana 1</div>
+                <h4>Diagnóstico de obra</h4>
+                <p>Sessão com o Ruben e o financeiro. Mapeamento do fluxo real: orçamentação, fornecedores, acompanhamento. Identificação dos 3 pontos de maior risco.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="when">Semanas 2–3</div>
+                <h4>Construção dos playbooks</h4>
+                <p>Orçamentação + seleção de fornecedores. Acompanhamento + verificação de prazos. Validados com a equipa antes de fechar.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="when">Semana 4</div>
+                <h4>Ativação e entrega</h4>
+                <p>A equipa usa o sistema num caso real. Ajuste fino. Métricas de sucesso definidas. Decisão conjunta sobre Fase 2.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="slide-footer">
+        <span class="footer-mark">peerwork · Intelligence, paired.</span>
+        <span>Margarida Pinto & Gui Rios</span>
+    </footer>
+</section>
+
+<!-- ─── SLIDE 11: FECHO + DEMO CTA ─── -->
+<section class="slide final">
+    <header class="slide-header">
+        <span>06 · Conclusão</span>
+        <span class="brand">peerwork · Intelligence paired, applied.</span>
+    </header>
+    <div class="slide-content">
+        <p class="final-quote">
+            O Ruben identificou a necessidade.<br>
+            Há <em>abertura real</em> e o timing é favorável.
+        </p>
+        <p class="final-detail">
+            A Fase 1 pode começar esta semana, sem burocracia, sem contrato longo, sem compromisso para além de quatro semanas. Antes disso, veja como ficaria o sistema de playbooks aplicado à Definite Real Estate.
+        </p>
+
+        <a href="../" class="demo-cta">
+            Veja como funciona
+            <span class="arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+        </a>
+        <div class="final-cta-helper">Demo navegável · 10 playbooks imobiliários</div>
+    </div>
+    <div class="final-signature">
+        <strong>Margarida Pinto & Gui Rios · Fundadores</strong>
+        Proposta preparada por Margarida Pinto · Abril 2026
+    </div>
+</section>
+
+<!-- ─── PRINT BUTTON ─── -->
+<button class="print-toolbar" onclick="window.print()" type="button" aria-label="Imprimir como PDF">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Imprimir / Guardar PDF
+</button>
+
+</body>
+</html>
