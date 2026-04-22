@@ -78,12 +78,6 @@
             color: var(--graphite);
         }
 
-        .nav-logo img {
-            height: 32px;
-            width: 32px;
-            border-radius: 6px;
-        }
-
         .nav-logo span {
             font-size: 1.125rem;
             font-weight: 500;
@@ -498,6 +492,173 @@
             margin-top: 3rem;
         }
 
+        /* ─── PLAYBOOK SEARCH ─── */
+        .playbook-search {
+            max-width: 640px;
+            margin: 0 auto 3rem;
+        }
+
+        .playbook-search-box {
+            position: relative;
+        }
+
+        .playbook-search-box svg {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-tertiary);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.2s ease;
+            pointer-events: none;
+        }
+
+        .playbook-search-box input {
+            width: 100%;
+            padding: 1.1rem 1.25rem 1.1rem 3.25rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--graphite);
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .playbook-search-box input:focus {
+            border-color: var(--cobalt-light);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+        }
+
+        .playbook-search-box input:focus + svg {
+            stroke: var(--cobalt);
+        }
+
+        .playbook-search-box input::placeholder {
+            color: var(--text-tertiary);
+            font-weight: 300;
+        }
+
+        .search-results {
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-results-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cobalt);
+            margin-bottom: 1rem;
+        }
+
+        .search-results-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .search-result-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            border: 1px solid var(--cobalt-light);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            animation: searchResultIn 0.3s ease forwards;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .search-result-card:nth-child(2) { animation-delay: 0.08s; }
+        .search-result-card:nth-child(3) { animation-delay: 0.16s; }
+
+        @keyframes searchResultIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-result-card:hover {
+            background: rgba(37, 99, 235, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-result-info h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--graphite);
+            margin-bottom: 0.2rem;
+        }
+
+        .search-result-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .search-result-match {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--cobalt);
+            background: rgba(37, 99, 235, 0.08);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .search-no-match {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 0.95rem;
+            animation: searchResultIn 0.3s ease forwards;
+            opacity: 0;
+        }
+
+        .search-no-match a {
+            color: var(--cobalt);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .search-no-match a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .search-result-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .search-result-match {
+                margin-left: 0;
+            }
+        }
+
         /* ─── APPROACH ─── */
         .approach-grid {
             display: grid;
@@ -673,12 +834,6 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-
-        .footer-left img {
-            height: 24px;
-            width: 24px;
-            border-radius: 4px;
         }
 
         .footer-left span {
@@ -893,7 +1048,6 @@
     <!-- NAVIGATION -->
     <nav class="nav" id="nav">
         <a href="#" class="nav-logo">
-            <img src="assets/logo.png" alt="peerwork">
             <span>peerwork</span>
         </a>
         <div class="nav-links" id="navLinks">
@@ -964,6 +1118,14 @@
             <p class="section-subtitle">
                 Each playbook is built for a specific professional profile. Concrete, structured, ready for immediate use.
             </p>
+            <div class="playbook-search">
+                <div class="playbook-search-box">
+                    <input type="text" id="playbookSearch" placeholder="Describe your challenge and we'll recommend the best playbooks..." autocomplete="off">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
             <div class="playbooks-grid">
                 <div class="playbook-card fade-up" onclick="openModal()">
                     <svg class="playbook-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -1117,7 +1279,6 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-left">
-                <img src="assets/logo.png" alt="peerwork">
                 <span>peerwork</span>
                 <span class="footer-tagline">Intelligence paired, applied.</span>
             </div>
@@ -1225,6 +1386,133 @@
                 }, 3000);
             });
         }
+
+        // Playbook search
+        const playbookData = [
+            {
+                id: 'management',
+                role: 'Management',
+                title: 'AI for Managers',
+                desc: 'Better decisions, faster. How AI can sharpen priorities, streamline reports, and surface what matters.',
+                keywords: ['manager', 'management', 'leader', 'leadership', 'director', 'executive', 'decisions', 'decision', 'priorities', 'priority', 'reports', 'report', 'kpi', 'kpis', 'team', 'teams', 'delegation', 'delegate', 'meetings', 'meeting', 'strategy', 'planning', 'plan', 'board', 'c-level', 'ceo', 'coo', 'vp', 'supervise', 'coordinate', 'align', 'alignment', 'goals', 'objectives', 'okr', 'performance', 'review', 'oversight', 'productivity']
+            },
+            {
+                id: 'legal',
+                role: 'Legal',
+                title: 'AI for Contract Analysis',
+                desc: 'Accelerate contract review, flag risks, and extract key clauses without losing the nuance that matters.',
+                keywords: ['contract', 'contracts', 'lawyer', 'legal', 'law', 'clause', 'clauses', 'compliance', 'risk', 'risks', 'review', 'litigation', 'regulation', 'regulations', 'due diligence', 'attorney', 'counsel', 'nda', 'agreement', 'agreements', 'terms', 'liability', 'intellectual property', 'ip', 'patent', 'trademark', 'gdpr', 'privacy', 'policy', 'audit', 'dispute', 'negotiate', 'negotiation']
+            },
+            {
+                id: 'creative',
+                role: 'Creative',
+                title: 'AI for Audiovisual Production',
+                desc: 'Speed up pre-production, editing workflows, and content iteration while keeping creative control.',
+                keywords: ['video', 'audio', 'audiovisual', 'production', 'editing', 'edit', 'creative', 'content', 'film', 'filmmaker', 'cinema', 'animation', 'motion', 'graphics', 'vfx', 'post-production', 'pre-production', 'script', 'storyboard', 'director', 'producer', 'camera', 'sound', 'music', 'podcast', 'youtube', 'streaming', 'render', 'color grading', 'subtitle', 'caption']
+            },
+            {
+                id: 'finance',
+                role: 'Finance',
+                title: 'AI for Financial Analysis',
+                desc: 'Structured approaches to forecasting, anomaly detection, and data synthesis for finance professionals.',
+                keywords: ['finance', 'financial', 'accounting', 'accountant', 'forecast', 'forecasting', 'budget', 'budgeting', 'revenue', 'cost', 'costs', 'profit', 'margin', 'cash flow', 'balance sheet', 'income', 'expense', 'expenses', 'tax', 'taxes', 'audit', 'cfo', 'controller', 'treasury', 'investment', 'roi', 'ebitda', 'p&l', 'variance', 'anomaly', 'reconciliation', 'data', 'spreadsheet', 'excel', 'numbers']
+            },
+            {
+                id: 'marketing',
+                role: 'Marketing',
+                title: 'AI for Marketing Teams',
+                desc: 'From campaign ideation to performance analysis, practical AI integration for modern marketing workflows.',
+                keywords: ['marketing', 'campaign', 'campaigns', 'brand', 'branding', 'advertising', 'ads', 'ad', 'social media', 'seo', 'sem', 'google ads', 'meta', 'facebook', 'instagram', 'linkedin', 'tiktok', 'content', 'copywriting', 'copy', 'email', 'newsletter', 'funnel', 'leads', 'lead', 'conversion', 'analytics', 'performance', 'engagement', 'audience', 'segmentation', 'crm', 'growth', 'acquisition', 'retention']
+            },
+            {
+                id: 'operations',
+                role: 'Operations',
+                title: 'AI for Operations',
+                desc: 'Optimize processes, identify bottlenecks, and build resilient systems with AI-augmented operations management.',
+                keywords: ['operations', 'ops', 'process', 'processes', 'workflow', 'workflows', 'logistics', 'supply chain', 'inventory', 'bottleneck', 'bottlenecks', 'efficiency', 'optimize', 'optimization', 'automate', 'automation', 'sop', 'quality', 'qa', 'warehouse', 'shipping', 'delivery', 'procurement', 'vendor', 'suppliers', 'manufacturing', 'lean', 'six sigma', 'continuous improvement', 'erp', 'system', 'systems', 'scale', 'scaling']
+            }
+        ];
+
+        const searchInput = document.getElementById('playbookSearch');
+        const searchResults = document.getElementById('searchResults');
+        let searchTimeout;
+
+        function tokenize(text) {
+            return text.toLowerCase()
+                .replace(/[^a-z0-9\s&-]/g, '')
+                .split(/\s+/)
+                .filter(w => w.length > 1);
+        }
+
+        function scorePlaybook(tokens, playbook) {
+            let score = 0;
+            const input = tokens.join(' ');
+            for (const kw of playbook.keywords) {
+                if (input.includes(kw)) {
+                    score += kw.split(' ').length > 1 ? 3 : 1;
+                } else {
+                    for (const t of tokens) {
+                        if (kw.startsWith(t) && t.length >= 3) {
+                            score += 0.5;
+                        }
+                    }
+                }
+            }
+            return score;
+        }
+
+        function performSearch(query) {
+            if (query.trim().length < 3) {
+                searchResults.classList.remove('active');
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            const tokens = tokenize(query);
+            if (tokens.length === 0) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const scored = playbookData
+                .map(pb => ({ ...pb, score: scorePlaybook(tokens, pb) }))
+                .filter(pb => pb.score > 0)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+
+            searchResults.classList.add('active');
+
+            if (scored.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="search-no-match">
+                        We'd love to help with that. <a href="#" onclick="openModal(); return false;">Get in touch</a> and describe your challenge.
+                    </div>`;
+                return;
+            }
+
+            const maxScore = scored[0].score;
+            searchResults.innerHTML = `
+                <div class="search-results-label">Recommended for you</div>
+                <div class="search-results-grid">
+                    ${scored.map(pb => {
+                        const pct = Math.min(Math.round((pb.score / maxScore) * 100), 100);
+                        const label = pct >= 80 ? 'Strong match' : pct >= 50 ? 'Good match' : 'Related';
+                        return `
+                            <div class="search-result-card" onclick="openModal()">
+                                <div class="search-result-info">
+                                    <h4>${pb.title}</h4>
+                                    <p>${pb.desc}</p>
+                                </div>
+                                <span class="search-result-match">${label}</span>
+                            </div>`;
+                    }).join('')}
+                </div>`;
+        }
+
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => performSearch(searchInput.value), 300);
+        });
 
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
