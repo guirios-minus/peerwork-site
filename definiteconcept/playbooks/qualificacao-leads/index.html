@@ -565,17 +565,11 @@
         <h2>Dados para gerar o prompt</h2>
 
         <div class="form-section">
-            <h3>Os teus dados + dados do lead</h3>
-            <p class="form-desc">Preenche os campos abaixo. Os dados da agência são preenchidos uma vez e reutilizados. Os dados do lead mudam a cada utilização.</p>
+            <h3>Dados da Definite Concept Real Estate + dados do lead</h3>
+            <p class="form-desc">Os dados da agência são preenchidos uma vez e reutilizados. Os dados do lead mudam a cada nova utilização.</p>
 
             <form id="playbookForm">
                 <div class="form-group-label">Contexto da agência (preenche 1 vez)</div>
-
-                <div class="field">
-                    <label>Nome da tua agência <span class="required">*</span></label>
-                    <div class="hint">Ex: Porta da Frente Christie's</div>
-                    <input type="text" id="nome_agencia" required placeholder="Nome da agência">
-                </div>
 
                 <div class="field">
                     <label>Zonas onde atuas <span class="required">*</span></label>
@@ -838,7 +832,7 @@
     document.getElementById('playbookForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const nome = document.getElementById('nome_agencia').value;
+        const nome = 'Definite Concept Real Estate';
         const zonas = document.getElementById('zonas_atuacao').value;
         const ticket = document.getElementById('ticket_medio').value;
         const tipologias = Array.from(document.querySelectorAll('input[name="tipologias"]:checked')).map(c => c.value).join(', ');
